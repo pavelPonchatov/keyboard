@@ -4,11 +4,11 @@ const keyboardArrRu = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '
 const keyboardArrRuShift = ['Ё', '!', "''", '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'Backspace', 'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/', 'Del', 'CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter', 'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', 'Shift', 'Ctrl', 'Fn', 'Win', 'Alt', 'Space', 'Alt', 'Menu', 'Ctrl'];
 const keyboardArrEngShift = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace', 'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'Del', 'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', "''", 'Enter', 'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', 'Shift', 'Ctrl', 'Fn', 'Win', 'Alt', 'Space', 'Alt', 'Menu', 'Ctrl'];
 let inputValue = '';
-body.innerHTML = '';
 let isEng = false;
 let isCaps = false;
 let isShift = false;
 
+body.innerHTML = '';
 
 const wrapper = document.createElement('div');
 wrapper.className = 'wrapper';
@@ -61,6 +61,10 @@ function generateKey(arr) {
       template += `<div  class="key" id=${arrKey[i]}>${arrKey[i]}</div>`;
     }
   }
+  template += `<div style="margin: 0 auto;">Клавиатура создана в операционной системе Windows</div>
+  <div style="margin: 0 auto;">Для переключения языка комбинация: левыe shift + alt</div>
+  <div style="margin: 0 auto;">Для корректной работы клавиатуры язык системы  должен быть изначально русский</div>
+  `;
 }
 
 
@@ -73,6 +77,7 @@ generateKey(keyboardArrRu);
 keyboard.innerHTML = template;
 
 document.addEventListener('keydown', (e) => {
+  textarea.focus();
   if (!isEng) {
     if (!isCaps) {
       if (e.code === 'CapsLock') {
@@ -156,7 +161,6 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  textarea.focus();
   document.querySelectorAll('.key').forEach((el) => {
     if (e.key === el.getAttribute('id')) {
       el.classList.add('key--active');
@@ -166,6 +170,11 @@ document.addEventListener('keydown', (e) => {
       }
       if (el.getAttribute('id') === 'Backspace') {
         inputValue = inputValue.slice(0, -1);
+      } else if (el.getAttribute('id') === 'Tab') {
+        e.preventDefault();
+        inputValue += '    ';
+      } else if (el.getAttribute('id') === 'Enter') {
+        inputValue += '\n';
       }
     } else if (e.code === el.getAttribute('id')) {
       el.classList.add('key--active');
