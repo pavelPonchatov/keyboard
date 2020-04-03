@@ -1,4 +1,5 @@
 const body = document.querySelector('body');
+const keyboardArrCode = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ShiftRight', 'ControlLeft', 'Fn', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ContextMenu', 'ControlRight'];
 const keyboardArrEng = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '/', 'Del', 'CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '', 'Enter', 'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Shift', 'Ctrl', 'Fn', 'Win', 'Alt', 'Space', 'Alt', 'Menu', 'Ctrl'];
 const keyboardArrRu = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '/', 'Del', 'CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter', 'Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'Shift', 'Ctrl', 'Fn', 'Win', 'Alt', 'Space', 'Alt', 'Menu', 'Ctrl'];
 const keyboardArrRuShift = ['Ё', '!', "''", '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'Backspace', 'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/', 'Del', 'CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter', 'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', 'Shift', 'Ctrl', 'Fn', 'Win', 'Alt', 'Space', 'Alt', 'Menu', 'Ctrl'];
@@ -25,45 +26,43 @@ body.appendChild(wrapper);
 wrapper.appendChild(textarea);
 wrapper.appendChild(keyboard);
 
-
 let template = '';
 
 function generateKey(arr) {
   const arrKey = arr;
-  for (let i = 0; i < arrKey.length; i += 1) {
+  for (let i = 0; i < keyboardArrCode.length; i += 1) {
     if (i === 54) {
       template += '<div class="clearfix"></div>';
     }
     if (arrKey[i] === 'Del') {
       template += `<div class="key" id=Delete>${arrKey[i]}</div>`;
     } else if (arrKey[i] === 'Ctrl') {
-      template += `<div class="key" id=Control>${arrKey[i]}</div>`;
+      template += `<div class="key" id=ControlLeft>${arrKey[i]}</div>`;
     } else if (arrKey[i] === 'Alt') {
-      template += `<div class="key" id=${arrKey[i]}>${arrKey[i]}</div>`;
+      template += `<div class="key" id=AltLeft>${arrKey[i]}</div>`;
     } else if (arrKey[i] === 'Win') {
       template += '<div class="key key--win" id=Meta></div>';
     } else if (arrKey[i] === 'Menu') {
-      template += `<div class="key key--menu" id=${arrKey[i]}></div>`;
+      template += '<div class="key key--menu" id=ContextMenu></div>';
     } else if (arrKey[i] === 'Backspace') {
-      template += `<div class="key key--big" id=${arrKey[i]}>${arrKey[i]}</div>`;
+      template += `<div class="key key--big" id=Backspace>${arrKey[i]}</div>`;
     } else if (arrKey[i] === 'Tab') {
-      template += `<div class="key key--big" id=${arrKey[i]}>${arrKey[i]}</div>`;
+      template += `<div class="key key--big" id=Tab>${arrKey[i]}</div>`;
     } else if (arrKey[i] === 'CapsLock') {
-      template += `<div class="key key--big" id=${arrKey[i]}>${arrKey[i]}</div>`;
+      template += `<div class="key key--big" id=CapsLock>${arrKey[i]}</div>`;
     } else if (arrKey[i] === 'Enter') {
-      template += `<div class="key key--big" id=${arrKey[i]}>${arrKey[i]}</div>`;
+      template += `<div class="key key--big" id=Enter>${arrKey[i]}</div>`;
       arrKey[i].textContent = 1;
     } else if (arrKey[i] === 'Shift') {
-      template += `<div class="key key--big" id=${arrKey[i]}>${arrKey[i]}</div>`;
+      template += `<div class="key key--big" id=ShiftLeft>${arrKey[i]}</div>`;
     } else if (arrKey[i] === 'Space') {
       template += `<div class="key key--space" id=Space>${arrKey[i]}</div>`;
     } else {
-      template += `<div  class="key" id=${arrKey[i]}>${arrKey[i]}</div>`;
+      template += `<div  class="key" id=${keyboardArrCode[i]}>${arrKey[i]}</div>`;
     }
   }
   template += `<div style="margin: 0 auto;">Клавиатура создана в операционной системе Windows</div>
   <div style="margin: 0 auto;">Для переключения языка комбинация: левыe shift + alt</div>
-  <div style="margin: 0 auto;">Для корректной работы клавиатуры язык системы  должен быть изначально русский</div>
   `;
 }
 
@@ -78,6 +77,10 @@ keyboard.innerHTML = template;
 
 document.addEventListener('keydown', (e) => {
   textarea.focus();
+  // let eng = localStorage.getItem('isEng');
+  // eng = JSON.parse(eng);
+  // console.log(eng);
+  // console.log(typeof eng);
   if (!isEng) {
     if (!isCaps) {
       if (e.code === 'CapsLock') {
@@ -107,6 +110,7 @@ document.addEventListener('keydown', (e) => {
       });
       keyboard.innerHTML = template;
       isEng = true;
+      // localStorage.setItem('isEng', JSON.stringify(isEng));
     }
 
 
@@ -147,6 +151,7 @@ document.addEventListener('keydown', (e) => {
       });
       keyboard.innerHTML = template;
       isEng = false;
+      // localStorage.setItem('isEng', JSON.stringify(isEng));
     }
 
     if (!isShift) {
@@ -162,7 +167,7 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener('keydown', (e) => {
   document.querySelectorAll('.key').forEach((el) => {
-    if (e.key === el.getAttribute('id')) {
+    if (e.code === el.getAttribute('id')) {
       el.classList.add('key--active');
       if (el.textContent.length < 2) {
         inputValue += el.textContent;
@@ -175,10 +180,10 @@ document.addEventListener('keydown', (e) => {
         inputValue += '    ';
       } else if (el.getAttribute('id') === 'Enter') {
         inputValue += '\n';
+      } else if (el.getAttribute('id') === 'Space') {
+        el.classList.add('key--active');
+        inputValue += ' ';
       }
-    } else if (e.code === el.getAttribute('id')) {
-      el.classList.add('key--active');
-      inputValue += ' ';
     }
   });
 });
@@ -249,9 +254,9 @@ keyboard.addEventListener('mousedown', (e) => {
 
 document.addEventListener('keyup', (e) => {
   document.querySelectorAll('.key').forEach((el) => {
-    if (e.key === el.getAttribute('id')) {
+    if (e.code === el.getAttribute('id')) {
       el.classList.remove('key--active');
-    } else if (e.code === el.getAttribute('id')) {
+    } else if (el.getAttribute('id') === 'Space') {
       el.classList.remove('key--active');
     }
   });
