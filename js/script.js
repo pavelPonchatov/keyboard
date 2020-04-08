@@ -77,10 +77,6 @@ keyboard.innerHTML = template;
 
 document.addEventListener('keydown', (e) => {
   textarea.focus();
-  // let eng = localStorage.getItem('isEng');
-  // eng = JSON.parse(eng);
-  // console.log(eng);
-  // console.log(typeof eng);
   if (!isEng) {
     if (!isCaps) {
       if (e.code === 'CapsLock') {
@@ -110,7 +106,6 @@ document.addEventListener('keydown', (e) => {
       });
       keyboard.innerHTML = template;
       isEng = true;
-      // localStorage.setItem('isEng', JSON.stringify(isEng));
     }
 
 
@@ -151,7 +146,6 @@ document.addEventListener('keydown', (e) => {
       });
       keyboard.innerHTML = template;
       isEng = false;
-      // localStorage.setItem('isEng', JSON.stringify(isEng));
     }
 
     if (!isShift) {
