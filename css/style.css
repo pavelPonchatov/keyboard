@@ -1,0 +1,76 @@
+.wrapper {
+  margin: 0 auto;
+  width: 700px;
+}
+
+.input-text {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.keyboard {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.key {
+  width: 36px;
+  height: 40px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  background-color: #CCCCFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 7px;
+  font-size: 17px;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.2s;
+}
+
+.key--big {
+  width: 100px;
+}
+
+.key--win {
+  background: url(../img/win.svg) center center no-repeat;
+  background-color: #CCCCFF;
+}
+
+.key--menu {
+  background: url(../img/menu.svg) center center no-repeat;
+  background-color: #CCCCFF;
+}
+
+.key--space {
+  width: 385px;
+}
+
+.key--active {
+  -webkit-transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.2s;
+  background-color: #009999;
+  border-radius: 15px;
+}
+
+.clearfix {
+  display: block;
+  width: 100%;
+  clear: both;
+}
+/*# sourceMappingURL=style.css.map */
